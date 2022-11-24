@@ -3,7 +3,7 @@ package com.example.mvvmcleanarch.data.repos.movie.dataSourceImpl
 import com.example.mvvmcleanarch.data.model.movie.Movie
 import com.example.mvvmcleanarch.data.repos.movie.dataSource.MoviesCacheDataSource
 
-class MoviesLocalDataSourceImpl : MoviesCacheDataSource {
+class MoviesCacheDataSourceImpl : MoviesCacheDataSource {
     private var cachedMovieList = ArrayList<Movie>()
 
     override suspend fun getMoviesFromCache(): List<Movie> {
