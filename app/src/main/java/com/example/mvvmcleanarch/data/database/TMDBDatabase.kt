@@ -17,21 +17,4 @@ abstract class TMDBDatabase : RoomDatabase(){
     abstract val movieDao: MovieDao
     abstract val tvShowDao: TvShowDao
     abstract val artistDao: ArtistDao
-
-    companion object{
-        @Volatile
-        private var INSTANCE: TMDBDatabase? = null
-
-        fun getInstance(context: Context): TMDBDatabase{
-            var instance = INSTANCE
-            if(instance == null){
-                instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    TMDBDatabase::class.java,
-                    "TMDB_database")
-                    .build()
-            }
-            return instance
-        }
-    }
 }

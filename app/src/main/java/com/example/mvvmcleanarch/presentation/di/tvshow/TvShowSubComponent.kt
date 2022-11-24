@@ -8,6 +8,7 @@ import dagger.Subcomponent
 interface TvShowSubComponent {
     fun inject(tvShowsActivity: TvShowsActivity)
 
+    @Subcomponent.Factory
     interface Factory{
         fun create():TvShowSubComponent
     }
