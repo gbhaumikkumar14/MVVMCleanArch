@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.HomeActivity">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_movie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Movies"
+        android:padding="32dp"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_rounded"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_tv_shows"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_tv_shows"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tv Shows"
+        android:padding="32dp"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_rounded"
+        app:layout_constraintTop_toBottomOf="@id/btn_movie"
+        app:layout_constraintBottom_toTopOf="@id/btn_artists"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_artists"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Artists"
+        android:padding="32dp"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_rounded"
+        app:layout_constraintTop_toBottomOf="@id/btn_tv_shows"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
