@@ -18,7 +18,7 @@ class ArtistsLocalDataSourceImpl(
         }
     }
 
-    override suspend fun saveArtistsToDd(artists: List<Artist>) {
+    override suspend fun saveArtistsToDb(artists: List<Artist>) {
         CoroutineScope(Dispatchers.IO).launch {
             artistDao.saveArtists(artists)
         }

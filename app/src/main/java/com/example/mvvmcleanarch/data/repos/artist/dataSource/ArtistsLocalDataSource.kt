@@ -5,5 +5,5 @@ import com.example.mvvmcleanarch.data.model.artist.Artist
 interface ArtistsLocalDataSource {
     suspend fun getArtistFromDb(): List<Artist>
     suspend fun deleteAllArtists()
-    suspend fun saveArtistsToDd(artists: List<Artist>)
+    suspend fun saveArtistsToDb(artists: List<Artist>)
 }
