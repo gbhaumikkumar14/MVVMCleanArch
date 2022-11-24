@@ -7,7 +7,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MovieLocalDataSourceImpl(private val movieDao: MovieDao) : MoviesLocalDataSource {
+class MoviesLocalDataSourceImpl(private val movieDao: MovieDao) : MoviesLocalDataSource {
     override suspend fun getPopularMoviesFromDB(): List<Movie> = movieDao.getAllMovies()
 
     override suspend fun savePopularMoviesToDB(movies: List<Movie>) {
