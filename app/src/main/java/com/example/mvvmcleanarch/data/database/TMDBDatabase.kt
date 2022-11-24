@@ -11,7 +11,7 @@ import com.example.mvvmcleanarch.data.model.tvShow.TvShow
 @Database(entities = [
     Movie::class,
     TvShow::class,
-    Artist::class], version = 1)
+    Artist::class], version = 1, exportSchema = false)
 
 abstract class TMDBDatabase : RoomDatabase(){
     abstract val movieDao: MovieDao
