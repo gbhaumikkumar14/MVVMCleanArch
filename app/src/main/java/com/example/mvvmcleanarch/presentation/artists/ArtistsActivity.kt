@@ -20,6 +20,12 @@ class ArtistsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_artists)
+
+        supportActionBar?.let {
+            title = "Artists"
+            it.subtitle = "Popular artists"
+        }
+
         (application as Injector).createArtistSubComponent().inject(this)
         artistViewModel = ViewModelProvider(this, artistViewModelFactory)[ArtistsViewModel::class.java]
         binding.rvArtists.layoutManager = LinearLayoutManager(

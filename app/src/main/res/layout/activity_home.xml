@@ -5,24 +5,35 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.HomeActivity">
+    tools:context=".presentation.HomeActivity"
+    android:background="@drawable/theme_gradient">
+
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.3"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_movie"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_movie"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Movies"
         android:padding="32dp"
         android:textColor="@color/white"
         android:background="@drawable/btn_rounded"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btn_tv_shows"/>
+        app:layout_constraintTop_toBottomOf="@id/app_icon"
+        app:layout_constraintBottom_toTopOf="@id/btn_tv_shows"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_tv_shows"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Tv Shows"
         android:padding="32dp"
@@ -30,21 +41,35 @@
         android:background="@drawable/btn_rounded"
         app:layout_constraintTop_toBottomOf="@id/btn_movie"
         app:layout_constraintBottom_toTopOf="@id/btn_artists"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_artists"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Artists"
         android:padding="32dp"
         android:textColor="@color/white"
         android:background="@drawable/btn_rounded"
         app:layout_constraintTop_toBottomOf="@id/btn_tv_shows"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

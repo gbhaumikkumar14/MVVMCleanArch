@@ -20,6 +20,12 @@ class TvShowsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tv_shows)
+
+        supportActionBar?.let {
+            title = "TvShows"
+            it.subtitle = "Popular tv shows"
+        }
+
         (application as Injector).createTvShowSubComponent().inject(this)
         tvShowViewModel = ViewModelProvider(this, tvShowViewModelFactory)[TvShowsViewModel::class.java]
         binding.rvTvShows.layoutManager = LinearLayoutManager(

@@ -17,10 +17,15 @@ class MovieActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMovieBinding
     private lateinit var adapter: MoviesAdapter
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_movie)
+
+        supportActionBar?.let {
+            title = "Movies"
+            it.subtitle = "Popular movies"
+        }
+
         (application as Injector).createMovieSubComponent().inject(this)
         movieViewModel = ViewModelProvider(this, moviesViewModelFactory)[MoviesViewModel::class.java]
         binding.rvMovies.layoutManager = LinearLayoutManager(

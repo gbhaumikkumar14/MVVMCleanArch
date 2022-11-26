@@ -17,6 +17,10 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
 
+        supportActionBar?.let {
+            title = "The Movie Database"
+        }
+
         binding.btnMovie.setOnClickListener {
             val intent = Intent(this, MovieActivity::class.java)
             startActivity(intent)

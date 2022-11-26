@@ -5,7 +5,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.movies.MovieActivity">
+        tools:context=".presentation.movies.MovieActivity"
+        android:background="@drawable/theme_gradient">
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/movie_refresh"
             android:layout_width="match_parent"
