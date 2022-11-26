@@ -1,9 +1,12 @@
 # TMDB - The Movie Database
-
-<img src='Screenshot1.png'/>
-<img src='Screenshot2.png'/>
-<img src='Screenshot3.png'/>
-<img src='Screenshot4.png'/>
+<table>
+<tr>
+  <td><img src='/Screenshots/Screenshot1.png' width="180" height="320"/></td>
+  <td><img src='/Screenshots/Screenshot2.png' width="180" height="320"/></td>
+  <td><img src='/Screenshots/Screenshot3.png' width="180" height="320"/></td>
+  <td><img src='/Screenshots/Screenshot4.png' width="180" height="320"/></td>
+</tr>
+  </table>
 
 TMDB application is created to demonstrate how to use MVVM Clean Architecture in android using all below android components in the app
 
