@@ -2,9 +2,7 @@ package com.example.mvvmcleanarch.presentation.movies
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvmcleanarch.R
@@ -30,19 +28,27 @@ class MovieActivity : AppCompatActivity() {
         adapter = MoviesAdapter()
         binding.rvMovies.adapter = adapter
 
+        binding.movieRefresh.setOnRefreshListener {
+            movieViewModel.updateMovies().observe(this) {
+                binding.movieRefresh.isRefreshing = false
+                it?.let {
+                    adapter.updateMovies(it)
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        }
+
         getMovies()
     }
 
     private fun getMovies() {
-        movieViewModel.getMovies().observe(this, Observer {
+        binding.movieRefresh.isRefreshing = true
+        movieViewModel.getMovies().observe(this) {
+            binding.movieRefresh.isRefreshing = false
             it?.let {
                 adapter.updateMovies(it)
                 adapter.notifyDataSetChanged()
             }
-        })
-    }
-
-    companion object{
-        const val TAG = "MovieActivity"
+        }
     }
 }

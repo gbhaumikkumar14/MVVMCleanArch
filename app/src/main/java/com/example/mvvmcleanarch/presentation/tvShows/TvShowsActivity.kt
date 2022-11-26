@@ -3,7 +3,6 @@ package com.example.mvvmcleanarch.presentation.tvShows
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvmcleanarch.R
@@ -28,15 +27,27 @@ class TvShowsActivity : AppCompatActivity() {
         adapter = TvShowsAdapter()
         binding.rvTvShows.adapter = adapter
 
+        binding.tvShowsRefresh.setOnRefreshListener {
+            tvShowViewModel.updateTvShows().observe(this) {
+                binding.tvShowsRefresh.isRefreshing = false
+                it?.let {
+                    adapter.updateMovies(it)
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        }
+
         getMovies()
     }
 
     private fun getMovies() {
-        tvShowViewModel.getTvShows().observe(this, Observer {
+        binding.tvShowsRefresh.isRefreshing = true
+        tvShowViewModel.getTvShows().observe(this) {
+            binding.tvShowsRefresh.isRefreshing = false
             it?.let {
                 adapter.updateMovies(it)
                 adapter.notifyDataSetChanged()
             }
-        })
+        }
     }
 }

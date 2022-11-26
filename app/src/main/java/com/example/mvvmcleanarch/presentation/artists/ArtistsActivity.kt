@@ -3,7 +3,6 @@ package com.example.mvvmcleanarch.presentation.artists
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvmcleanarch.R
@@ -28,15 +27,27 @@ class ArtistsActivity : AppCompatActivity() {
         adapter = ArtistsAdapter()
         binding.rvArtists.adapter = adapter
 
+        binding.artistsRefresh.setOnRefreshListener {
+            artistViewModel.updateArtists().observe(this) {
+                binding.artistsRefresh.isRefreshing = false
+                it?.let {
+                    adapter.updateMovies(it)
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        }
+
         getMovies()
     }
 
     private fun getMovies() {
-        artistViewModel.getArtists().observe(this, Observer {
+        binding.artistsRefresh.isRefreshing = true
+        artistViewModel.getArtists().observe(this) {
+            binding.artistsRefresh.isRefreshing = false
             it?.let {
                 adapter.updateMovies(it)
                 adapter.notifyDataSetChanged()
             }
-        })
+        }
     }
 }
