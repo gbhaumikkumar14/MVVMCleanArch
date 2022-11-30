@@ -36,3 +36,9 @@ To improve the performance while loading data into recycler views below is the f
 
 The above sentance means if cache data source does not have data to display then it will get it from database and update in cache and return. If room database also does not have to data to return then it will get data from API and save it inside the database and return to the view model
 
+# MVVM Architecture
+
+Here is the full app diagram how we have achived MVVM clean architecture using ViewModel, UseCase, Repository, DataSources Retrofit and Room.
+
+<img src='MVVM.jpeg' width="300" height="400"/>
+
