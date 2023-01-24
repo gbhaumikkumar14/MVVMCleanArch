@@ -7,9 +7,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvmcleanarch.R
 import com.example.mvvmcleanarch.databinding.ActivityArtistsBinding
-import com.example.mvvmcleanarch.presentation.di.Injector
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class ArtistsActivity : AppCompatActivity() {
     @Inject
     lateinit var artistViewModelFactory: ArtistsViewModelFactory
@@ -26,7 +27,6 @@ class ArtistsActivity : AppCompatActivity() {
             it.subtitle = "Popular artists"
         }
 
-        (application as Injector).createArtistSubComponent().inject(this)
         artistViewModel = ViewModelProvider(this, artistViewModelFactory)[ArtistsViewModel::class.java]
         binding.rvArtists.layoutManager = LinearLayoutManager(
             this.applicationContext, LinearLayoutManager.VERTICAL, false)

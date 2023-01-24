@@ -1,6 +1,6 @@
 package com.example.mvvmcleanarch.presentation.di.core
 
-import android.content.Context
+import android.app.Application
 import androidx.room.Room
 import com.example.mvvmcleanarch.data.database.ArtistDao
 import com.example.mvvmcleanarch.data.database.MovieDao
@@ -8,16 +8,19 @@ import com.example.mvvmcleanarch.data.database.TMDBDatabase
 import com.example.mvvmcleanarch.data.database.TvShowDao
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
+@InstallIn(SingletonComponent::class)
 class DatabaseModule() {
 
     @Singleton
     @Provides
-    fun provideMovieDatabase(context: Context): TMDBDatabase{
+    fun provideMovieDatabase(app: Application): TMDBDatabase{
         return Room.databaseBuilder(
-            context.applicationContext,
+            app.applicationContext,
             TMDBDatabase::class.java,
             "TMDB_database")
             .build()

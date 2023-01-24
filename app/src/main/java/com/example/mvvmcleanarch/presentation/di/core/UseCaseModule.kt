@@ -6,8 +6,11 @@ import com.example.mvvmcleanarch.domain.repositories.TvShowsRepository
 import com.example.mvvmcleanarch.domain.useCases.*
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 
 @Module
+@InstallIn(SingletonComponent::class)
 class UseCaseModule {
 
     @Provides
