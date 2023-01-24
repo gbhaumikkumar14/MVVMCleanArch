@@ -7,9 +7,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvmcleanarch.R
 import com.example.mvvmcleanarch.databinding.ActivityTvShowsBinding
-import com.example.mvvmcleanarch.presentation.di.Injector
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class TvShowsActivity : AppCompatActivity() {
     @Inject
     lateinit var tvShowViewModelFactory: TvShowsViewModelFactory
@@ -26,7 +27,6 @@ class TvShowsActivity : AppCompatActivity() {
             it.subtitle = "Popular tv shows"
         }
 
-        (application as Injector).createTvShowSubComponent().inject(this)
         tvShowViewModel = ViewModelProvider(this, tvShowViewModelFactory)[TvShowsViewModel::class.java]
         binding.rvTvShows.layoutManager = LinearLayoutManager(
             this.applicationContext, LinearLayoutManager.VERTICAL, false)

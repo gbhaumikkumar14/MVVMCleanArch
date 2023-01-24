@@ -17,9 +17,12 @@ import com.example.mvvmcleanarch.domain.repositories.MoviesRepository
 import com.example.mvvmcleanarch.domain.repositories.TvShowsRepository
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
+@InstallIn(SingletonComponent::class)
 class RepositoryModule {
 
     @Singleton

@@ -11,9 +11,12 @@ import com.example.mvvmcleanarch.data.repos.tvShow.dataSource.TvShowsLocalDataSo
 import com.example.mvvmcleanarch.data.repos.tvShow.dataSourceImpl.TvShowsLocalDataSourceImpl
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
+@InstallIn(SingletonComponent::class)
 class LocalDataSourceModule {
 
     @Singleton

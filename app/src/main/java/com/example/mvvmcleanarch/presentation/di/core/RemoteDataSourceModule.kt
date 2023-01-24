@@ -1,5 +1,6 @@
 package com.example.mvvmcleanarch.presentation.di.core
 
+import com.example.mvvmcleanarch.BuildConfig
 import com.example.mvvmcleanarch.data.api.TMDBService
 import com.example.mvvmcleanarch.data.repos.artist.dataSource.ArtistsRemoteDataSource
 import com.example.mvvmcleanarch.data.repos.artist.dataSourceImpl.ArtistsRemoteDataSourceImpl
@@ -9,10 +10,14 @@ import com.example.mvvmcleanarch.data.repos.tvShow.dataSource.TvShowsRemoteDataS
 import com.example.mvvmcleanarch.data.repos.tvShow.dataSourceImpl.TvShowsRemoteDataSourceImpl
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-class RemoteDataSourceModule(private val apiKey: String) {
+@InstallIn(SingletonComponent::class)
+class RemoteDataSourceModule() {
+    private val apiKey = BuildConfig.API_KEY
 
     @Singleton
     @Provides

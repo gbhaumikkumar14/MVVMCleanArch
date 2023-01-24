@@ -5,11 +5,15 @@ import com.example.mvvmcleanarch.domain.useCases.UpdateArtistsUseCase
 import com.example.mvvmcleanarch.presentation.artists.ArtistsViewModelFactory
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.scopes.ActivityScoped
 
 @Module
+@InstallIn(ActivityComponent::class)
 class ArtistModule {
 
-    @ArtistScope // custom scope
+    @ActivityScoped // custom scope
     @Provides
     fun provideArtistViewModelFactory(
         getArtistsUseCase: GetArtistsUseCase,

@@ -7,9 +7,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvmcleanarch.R
 import com.example.mvvmcleanarch.databinding.ActivityMovieBinding
-import com.example.mvvmcleanarch.presentation.di.Injector
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class MovieActivity : AppCompatActivity() {
     @Inject
     lateinit var moviesViewModelFactory: MoviesViewModelFactory
@@ -26,7 +27,6 @@ class MovieActivity : AppCompatActivity() {
             it.subtitle = "Popular movies"
         }
 
-        (application as Injector).createMovieSubComponent().inject(this)
         movieViewModel = ViewModelProvider(this, moviesViewModelFactory)[MoviesViewModel::class.java]
         binding.rvMovies.layoutManager = LinearLayoutManager(
             this.applicationContext, LinearLayoutManager.VERTICAL, false)

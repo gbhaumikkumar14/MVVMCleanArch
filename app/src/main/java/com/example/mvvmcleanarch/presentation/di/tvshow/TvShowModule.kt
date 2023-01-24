@@ -5,11 +5,15 @@ import com.example.mvvmcleanarch.domain.useCases.UpdateTvShowsUseCase
 import com.example.mvvmcleanarch.presentation.tvShows.TvShowsViewModelFactory
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.scopes.ActivityScoped
 
 @Module
+@InstallIn(ActivityComponent::class)
 class TvShowModule {
 
-    @TvShowScope // custom scope
+    @ActivityScoped // custom scope
     @Provides
     fun provideTvShowViewModelFactory(
         getTvShowsUseCase: GetTvShowsUseCase,
